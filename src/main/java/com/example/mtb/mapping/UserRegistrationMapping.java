@@ -1,8 +1,10 @@
 package com.example.mtb.mapping;
 
 import com.example.mtb.dto.UserRegistrationDTO;
+import com.example.mtb.dto.UserResponseDTO;
 import com.example.mtb.entity.TheaterOwner;
 import com.example.mtb.entity.User;
+import com.example.mtb.entity.UserDetails;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,5 +29,9 @@ public class UserRegistrationMapping {
         theaterOwner.setPhoneNumber(userRegistrationDTO.phoneNumber());
         theaterOwner.setDateOfBirth(userRegistrationDTO.dateOfBirth());
         return theaterOwner;
+    }
+    public UserResponseDTO userResponseDTO(UserDetails userDetails){
+        return new UserResponseDTO(userDetails.getUserId(), userDetails.getUsername(), userDetails.getEmail(), userDetails.getPhoneNumber(),
+                userDetails.getDateOfBirth());
     }
 }
